@@ -1,0 +1,9 @@
+cff-version: 1.1.0
+message: "Code and Data to the Paper Pseudo-time trajectory of single-cell lipidomics: Suggestion for experimental setup and computational analysis."
+authors:
+- family-names: Jost
+  given-names: Paul Jonas
+orcid: https://orcid.org/0000-0001-7613-6244
+title:
+version: v0.1
+date-released: 2024-07-04
