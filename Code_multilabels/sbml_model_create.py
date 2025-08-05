@@ -1,8 +1,9 @@
-import datetime
 import os
 import re
 
-import amici.petab_simulate
+from amici.petab_simulate import PetabSimulator
+# # For newer versions of AMICI, use the following import instead:
+# from amici.petab.simulator import PetabSimulator
 import libsbml
 import pandas as pd
 import petab
@@ -43,7 +44,7 @@ def create_synthetic_data(
         solver.setRelativeTolerance(1e-12)
         solver.setAbsoluteTolerance(1e-15)
 
-    simulator = amici.petab_simulate.PetabSimulator(
+    simulator = PetabSimulator(
         petab_problem, amici_model=model
     )
 
@@ -99,8 +100,7 @@ def create_sbml_model(
     )
 
     # write model to file
-    time = datetime.datetime.now().strftime("%Y_%m_%d")
-    sbml_file = f"lipidomics_{time}_{len(labels)}_labels"
+    sbml_file = f"lipidomics_2023_08_30_{len(labels)}_labels"
     if index is not None:
         dir = f"../Petab_models_230829/multilabels/{sbml_file}_{index}"
         sbml_file = f"{sbml_file}_{index}"
@@ -235,7 +235,6 @@ def create_petab_model(
     )
     problem = importer.create_problem(
         n_threads=8,
-        guess_steadystate=True,
         force_compile=False,
     )
     create_synthetic_data(

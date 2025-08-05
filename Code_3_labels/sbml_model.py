@@ -1,3 +1,13 @@
+"""
+This module defines the constants and variables used in the SBML model.
+
+It includes definitions for:
+- LABELS: The labels used in the model
+- SPECIES: The species in the model and their number of fatty acids
+- PARAMETERS: The parameters of the model and their values
+- INITIAL_VALUES: The initial values of the species
+- REACTIONS: The reactions in the model, loaded from a TSV file
+"""
 import pandas as pd
 
 from sbml_model_util import Reaction
@@ -113,7 +123,9 @@ INITIAL_VALUES = {
 }
 
 # load reaction from table
-df_reactions = pd.read_csv("reaction_table.tsv", sep="\t")
+df_reactions = pd.read_csv(
+    "reaction_table.tsv", sep="\t", na_filter=False
+)
 REACTIONS = [
     Reaction(**reaction) for reaction in df_reactions.to_dict("records")
 ]

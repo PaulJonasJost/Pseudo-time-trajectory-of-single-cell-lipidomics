@@ -3,21 +3,39 @@ A file to run visualizations with an existing result h5 file.
 """
 import matplotlib.pyplot as plt
 import matplotlib.lines as mlines
-import matplotlib
 import numpy as np
 import os
-import pypesto.visualize as visualize
 import pypesto.petab
 import petab
 import pypesto.store
-import amici.plotting
 import pypesto.visualize.model_fit as model_fit
 import petab.visualize as petab_vis
 
-from typing import List, Sequence, Optional
-
 
 def plot_time_trajectories(results_dir, res_filename, result, problem):
+    """
+    Plot time trajectories of DAG species with different labels.
+
+    This function creates a visualization of the time trajectories of different DAG species
+    with different labels. It adds annotations, vertical lines for timepoints, and customizes
+    the appearance of the plot. The plot is saved as an SVG file.
+
+    Parameters
+    ----------
+    results_dir : str
+        The directory where the plot will be saved.
+    res_filename : str
+        The base filename for the saved plot.
+    result : pypesto.Result
+        The optimization result containing the best parameter values.
+    problem : pypesto.Problem
+        The optimization problem used to simulate the time trajectories.
+
+    Returns
+    -------
+    None
+        The function creates and saves a plot but does not return any value.
+    """
     obs_names = [
         # 'observable_DAG_ul_ul',
         'observable_DAG_16_1_16_1',
@@ -148,7 +166,7 @@ if __name__ == '__main__':
     problem.objective.amici_solver.setAbsoluteTolerance(1e-12)
 
     res_filename = f'{MODEL_FILE}_{N_OPT}starts'  # _{OPTIMIZATION_DAY}'
-    result_file = '../results_h5/'+res_filename+'.hdf5'
+    result_file = '../Results_h5/'+res_filename+'.hdf5'
 
     result = pypesto.store.read_result(result_file, optimize=True,
                                        problem=False)
@@ -157,9 +175,6 @@ if __name__ == '__main__':
     # use the folder this file is in as results directory
     results_dir = os.path.dirname(os.path.abspath(__file__))
 
-
-
-    #
     # Figure 2 F schematic
     plot_time_trajectories(
         results_dir=results_dir,

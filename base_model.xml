@@ -1,0 +1,805 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2/version4" level="2" version="4">
+  <model>
+    <listOfUnitDefinitions>
+      <unitDefinition id="per_second">
+        <listOfUnits>
+          <unit kind="second" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment id="c1" spatialDimensions="3" size="1" units="litre" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="FA_ul" compartment="c1" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="GLY" compartment="c1" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="G3P" compartment="c1" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="LPA_ul" compartment="c1" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="PA_ul_ul" compartment="c1" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="DAG_ul_ul" compartment="c1" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="TAG_ul_ul_ul" compartment="c1" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="MAG_ul" compartment="c1" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Choline" compartment="c1" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="ph_C" compartment="c1" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="CDP_C" compartment="c1" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Ethanolamine" compartment="c1" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="ph_EA" compartment="c1" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="CDP_EA" compartment="c1" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Serine" compartment="c1" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="PC_ul_ul" compartment="c1" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="PE_ul_ul" compartment="c1" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="PS_ul_ul" compartment="c1" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="LPC_ul" compartment="c1" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="G3PC" compartment="c1" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="LPE_ul" compartment="c1" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="G3PE" compartment="c1" initialAmount="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="k_glycerol_to_g3p" value="0.0113979652100262" units="per_second" constant="false"/>
+      <parameter id="k_g3p_to_lpa" value="0.0337087466123123" units="per_second" constant="false"/>
+      <parameter id="k_lpa_to_pa" value="0.0252587654961869" units="per_second" constant="false"/>
+      <parameter id="k_pa_to_dag" value="0.0365987564012055" units="per_second" constant="false"/>
+      <parameter id="k_dag_to_tag" value="0.0322975595340664" units="per_second" constant="false"/>
+      <parameter id="k_choline_ph" value="0.0429917012721992" units="per_second" constant="false"/>
+      <parameter id="k_choline_cdp" value="0.0868163236746027" units="per_second" constant="false"/>
+      <parameter id="k_ea_ph" value="0.0656018203279375" units="per_second" constant="false"/>
+      <parameter id="k_ea_cdp" value="0.088775361074713" units="per_second" constant="false"/>
+      <parameter id="k_pe_syn" value="0.10856991985199" units="per_second" constant="false"/>
+      <parameter id="k_pc_syn" value="0.170230161499458" units="per_second" constant="false"/>
+      <parameter id="k_pc_to_ps" value="0.206539193307159" units="per_second" constant="false"/>
+      <parameter id="k_pe_to_ps" value="0.154120078166891" units="per_second" constant="false"/>
+      <parameter id="k_ps_to_pe" value="0.144264265827914" units="per_second" constant="false"/>
+      <parameter id="k_pe_to_pc" value="0.163035785588576" units="per_second" constant="false"/>
+      <parameter id="k_pc_to_lpc" value="0.204151265616732" units="per_second" constant="false"/>
+      <parameter id="k_lpc_to_g3pc" value="0.14781288881213" units="per_second" constant="false"/>
+      <parameter id="k_g3pc_to_g3p" value="0.158807750269181" units="per_second" constant="false"/>
+      <parameter id="k_pe_to_lpe" value="0.259604449656402" units="per_second" constant="false"/>
+      <parameter id="k_lpe_to_g3pe" value="0.242335754785854" units="per_second" constant="false"/>
+      <parameter id="k_g3pe_to_g3p" value="0.181215031887419" units="per_second" constant="false"/>
+      <parameter id="k_dag_to_mag" value="0.185521167494274" units="per_second" constant="false"/>
+      <parameter id="k_mag_to_dag" value="0.170036018252532" units="per_second" constant="false"/>
+      <parameter id="k_tag_to_dag" value="0.239806248317703" units="per_second" constant="false"/>
+      <parameter id="k_mag_to_gly" value="0.348489525237854" units="per_second" constant="false"/>
+      <parameter id="k_serine_syn" value="0.219358033374556" units="per_second" constant="false"/>
+      <parameter id="k_gly_syn" value="0.330052569734834" units="per_second" constant="false"/>
+      <parameter id="k_fa_influx" value="0.21648607679606" units="per_second" constant="false"/>
+      <parameter id="k_serine_deg" value="0.280310365613262" units="per_second" constant="false"/>
+      <parameter id="k_pc_trans" value="0.279792351087838" units="per_second" constant="false"/>
+      <parameter id="k_fa_deg" value="0.321990165402488" units="per_second" constant="false"/>
+      <parameter id="k_gly_deg" value="0.415390558438506" units="per_second" constant="false"/>
+      <parameter id="k_choline_deph" value="0.41224439306773" units="per_second" constant="false"/>
+      <parameter id="k_ea_deph" value="0.365537811970796" units="per_second" constant="false"/>
+      <parameter id="k_gly_deph" value="0.303726654761093" units="per_second" constant="false"/>
+      <parameter id="k_choline_syn" value="0.361384859531619" units="per_second" constant="false"/>
+      <parameter id="k_choline_deg" value="0.307225440408153" units="per_second" constant="false"/>
+      <parameter id="k_choline_cdp_back" value="0.298073997178653" units="per_second" constant="false"/>
+      <parameter id="k_ea_cdp_back" value="0.452814523683796" units="per_second" constant="false"/>
+      <parameter id="k_ea_deg" value="0.417840965317431" units="per_second" constant="false"/>
+      <parameter id="preeq_switch" value="0.910276273827123" units="per_second" constant="false"/>
+      <parameter id="k_fa_ul_influx" value="0.0098905110025679" units="per_second" constant="false"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule variable="k_fa_ul_influx">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <apply>
+              <times/>
+              <apply>
+                <minus/>
+                <cn type="integer"> 1 </cn>
+                <ci> preeq_switch </ci>
+              </apply>
+              <ci> k_fa_influx </ci>
+            </apply>
+            <piecewise>
+              <piece>
+                <ci> k_fa_influx </ci>
+                <apply>
+                  <geq/>
+                  <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> Time </csymbol>
+                  <cn type="integer"> 0 </cn>
+                </apply>
+              </piece>
+              <otherwise>
+                <cn type="integer"> 0 </cn>
+              </otherwise>
+            </piecewise>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction id="GLY_to_G3P_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="GLY" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="G3P" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_glycerol_to_g3p </ci>
+              <ci> GLY </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="G3P_to_LPA_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="G3P" stoichiometry="1"/>
+          <speciesReference species="FA_ul" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="LPA_ul" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_g3p_to_lpa </ci>
+              <ci> G3P </ci>
+              <ci> FA_ul </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="LPA_to_PA_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="LPA_ul" stoichiometry="1"/>
+          <speciesReference species="FA_ul" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PA_ul_ul" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_lpa_to_pa </ci>
+              <ci> LPA_ul </ci>
+              <ci> FA_ul </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="PA_to_DAG_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="PA_ul_ul" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="DAG_ul_ul" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_pa_to_dag </ci>
+              <ci> PA_ul_ul </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="DAG_to_TAG_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="DAG_ul_ul" stoichiometry="1"/>
+          <speciesReference species="FA_ul" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="TAG_ul_ul_ul" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_dag_to_tag </ci>
+              <ci> DAG_ul_ul </ci>
+              <ci> FA_ul </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Choline_to_ph_C_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Choline" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="ph_C" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_choline_ph </ci>
+              <ci> Choline </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="ph_C_to_CDP_C_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="ph_C" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="CDP_C" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_choline_cdp </ci>
+              <ci> ph_C </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Ethanolamine_to_ph_EA_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Ethanolamine" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="ph_EA" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_ea_ph </ci>
+              <ci> Ethanolamine </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="ph_EA_to_CDP_EA_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="ph_EA" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="CDP_EA" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_ea_cdp </ci>
+              <ci> ph_EA </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="DAG_to_PE_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="DAG_ul_ul" stoichiometry="1"/>
+          <speciesReference species="CDP_EA" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PE_ul_ul" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_pe_syn </ci>
+              <ci> DAG_ul_ul </ci>
+              <ci> CDP_EA </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="DAG_to_PC_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="DAG_ul_ul" stoichiometry="1"/>
+          <speciesReference species="CDP_C" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PC_ul_ul" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_pc_syn </ci>
+              <ci> DAG_ul_ul </ci>
+              <ci> CDP_C </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="PC_to_PS_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="PC_ul_ul" stoichiometry="1"/>
+          <speciesReference species="Serine" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PS_ul_ul" stoichiometry="1"/>
+          <speciesReference species="Choline" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_pc_to_ps </ci>
+              <ci> PC_ul_ul </ci>
+              <ci> Serine </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="PE_to_PS_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="PE_ul_ul" stoichiometry="1"/>
+          <speciesReference species="Serine" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PS_ul_ul" stoichiometry="1"/>
+          <speciesReference species="Ethanolamine" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_pe_to_ps </ci>
+              <ci> PE_ul_ul </ci>
+              <ci> Serine </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="PS_to_PE_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="PS_ul_ul" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PE_ul_ul" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_ps_to_pe </ci>
+              <ci> PS_ul_ul </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="PE_to_PC_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="PE_ul_ul" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PC_ul_ul" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_pe_to_pc </ci>
+              <ci> PE_ul_ul </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="PC_to_LPC_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="PC_ul_ul" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="LPC_ul" stoichiometry="1"/>
+          <speciesReference species="FA_ul" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_pc_to_lpc </ci>
+              <ci> propensity </ci>
+              <ci> PC_ul_ul </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="propensity" value="1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="LPC_to_G3PC_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="LPC_ul" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="G3PC" stoichiometry="1"/>
+          <speciesReference species="FA_ul" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_lpc_to_g3pc </ci>
+              <ci> propensity </ci>
+              <ci> LPC_ul </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="propensity" value="1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="G3PC_to_G3P_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="G3PC" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="G3P" stoichiometry="1"/>
+          <speciesReference species="Choline" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_g3pc_to_g3p </ci>
+              <ci> G3PC </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="PE_to_LPE_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="PE_ul_ul" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="LPE_ul" stoichiometry="1"/>
+          <speciesReference species="FA_ul" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_pe_to_lpe </ci>
+              <ci> propensity </ci>
+              <ci> PE_ul_ul </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="propensity" value="1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="LPE_to_G3PE_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="LPE_ul" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="G3PE" stoichiometry="1"/>
+          <speciesReference species="FA_ul" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_lpe_to_g3pe </ci>
+              <ci> propensity </ci>
+              <ci> LPE_ul </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="propensity" value="1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="G3PE_to_G3P_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="G3PE" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="G3P" stoichiometry="1"/>
+          <speciesReference species="Ethanolamine" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_g3pe_to_g3p </ci>
+              <ci> G3PE </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="DAG_to_MAG_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="DAG_ul_ul" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="MAG_ul" stoichiometry="1"/>
+          <speciesReference species="FA_ul" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_dag_to_mag </ci>
+              <ci> propensity </ci>
+              <ci> DAG_ul_ul </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="propensity" value="1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="MAG_to_DAG_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="MAG_ul" stoichiometry="1"/>
+          <speciesReference species="FA_ul" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="DAG_ul_ul" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_mag_to_dag </ci>
+              <ci> MAG_ul </ci>
+              <ci> FA_ul </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="TAG_to_DAG_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="TAG_ul_ul_ul" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="DAG_ul_ul" stoichiometry="1"/>
+          <speciesReference species="FA_ul" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_tag_to_dag </ci>
+              <ci> propensity </ci>
+              <ci> TAG_ul_ul_ul </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="propensity" value="1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="MAG_to_GLY_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="MAG_ul" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="GLY" stoichiometry="1"/>
+          <speciesReference species="FA_ul" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_mag_to_gly </ci>
+              <ci> propensity </ci>
+              <ci> MAG_ul </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="propensity" value="1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Serine_synthesis" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference species="Serine" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <ci> k_serine_syn </ci>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Serine_degradation_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Serine" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_serine_deg </ci>
+              <ci> Serine </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="GLY_synthesis" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference species="GLY" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <ci> k_gly_syn </ci>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="GLY_degradation_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="GLY" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_gly_deg </ci>
+              <ci> GLY </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="FA_degradation_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="FA_ul" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_fa_deg </ci>
+              <ci> FA_ul </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="PC_degradation_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="PC_ul_ul" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_pc_trans </ci>
+              <ci> PC_ul_ul </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="ph_C_to_Choline_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="ph_C" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Choline" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_choline_deph </ci>
+              <ci> ph_C </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="ph_EA_to_Ethanolamine_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="ph_EA" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Ethanolamine" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_ea_deph </ci>
+              <ci> ph_EA </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="G3P_to_GLY_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="G3P" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="GLY" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_gly_deph </ci>
+              <ci> G3P </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Choline_synthesis" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference species="Choline" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <ci> k_choline_syn </ci>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Choline_degradation_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Choline" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_choline_deg </ci>
+              <ci> Choline </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="CDP_C_to_ph_C_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="CDP_C" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="ph_C" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_choline_cdp_back </ci>
+              <ci> CDP_C </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="CDP_EA_to_ph_EA_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="CDP_EA" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="ph_EA" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_ea_cdp_back </ci>
+              <ci> CDP_EA </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Ethanolamine_degradation_0" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Ethanolamine" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_ea_deg </ci>
+              <ci> Ethanolamine </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="FA_ul_synthesis" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference species="FA_ul" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <ci> k_fa_ul_influx </ci>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

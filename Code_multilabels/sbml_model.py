@@ -113,7 +113,9 @@ INITIAL_VALUES = {
 }
 
 # load reaction from table
-df_reactions = pd.read_csv('reaction_table.tsv', sep='\t')
+df_reactions = pd.read_csv(
+    "reaction_table.tsv", sep="\t", na_filter=False
+)
 REACTIONS = [
     Reaction(**reaction) for reaction in df_reactions.to_dict('records')
 ]

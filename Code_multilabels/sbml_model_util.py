@@ -7,7 +7,7 @@ from typing import Iterable, List
 from collections import Counter
 from copy import deepcopy
 
-import combinations_with_replacement as combinations_with_replacement
+from itertools import combinations_with_replacement
 
 logger = logging.getLogger(__name__)
 

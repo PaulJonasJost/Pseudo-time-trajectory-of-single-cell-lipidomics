@@ -2,7 +2,9 @@ import datetime
 import os
 import re
 
-import amici.petab_simulate
+from amici.petab_simulate import PetabSimulator
+# # For newer versions of AMICI, use the following import instead:
+# from amici.petab.simulator import PetabSimulator
 import libsbml
 import pandas as pd
 import petab
@@ -33,9 +35,31 @@ NON_OBSERVABLES = [
 def create_synthetic_data(
         petab_problem, filename: str, model=None, noise=True
 ):
-    """create synthetic data for a given petab problem
-    and save it to filename. Can also provide the amici MODEL to speed up
-    compilation."""
+    """
+    Create synthetic data for a given PEtab problem and save it to a file.
+
+    This function simulates data using the provided PEtab problem and saves it to a file.
+    If noise is True, random noise will be added to the simulated data. The function
+    ensures that no negative values are present in the synthetic data by re-simulating
+    if necessary.
+
+    Parameters
+    ----------
+    petab_problem : petab.Problem
+        The PEtab problem to simulate data for.
+    filename : str
+        The base filename to save the data to. The function will append '.tsv' to this name.
+    model : amici.Model, optional
+        The AMICI model to use for simulation. If provided, it can speed up compilation.
+        Default is None.
+    noise : bool, optional
+        Whether to add noise to the simulated data. Default is True.
+
+    Returns
+    -------
+    None
+        The function saves the data to a file but does not return any value.
+    """
     solver = None
     if model is not None:
         # Create solver instance
@@ -43,7 +67,7 @@ def create_synthetic_data(
         solver.setRelativeTolerance(1e-12)
         solver.setAbsoluteTolerance(1e-15)
 
-    simulator = amici.petab_simulate.PetabSimulator(
+    simulator = PetabSimulator(
         petab_problem, amici_model=model
     )
 
@@ -72,7 +96,25 @@ def create_synthetic_data(
 
 def create_sbml_model(parameter_dict: dict = PARAMETERS, index: int = None):
     """
-    Creates the SBML model of the lipidomics model.
+    Create the SBML model of the lipidomics model.
+
+    This function creates an SBML model with the specified parameters. It adds all
+    parameters, species, and reactions to the model, and sets up pulse-chase labeling.
+    The model is then saved to an XML file.
+
+    Parameters
+    ----------
+    parameter_dict : dict, optional
+        A dictionary of parameter names and values to use in the model.
+        Default is the PARAMETERS constant from sbml_model.py.
+    index : int, optional
+        If provided, the model will be saved with this index in its filename and directory.
+        Default is None.
+
+    Returns
+    -------
+    str
+        The base filename of the saved SBML model.
     """
     # MODEL
     model = simplesbml.SbmlModel(level=2, version=4)
@@ -93,8 +135,8 @@ def create_sbml_model(parameter_dict: dict = PARAMETERS, index: int = None):
     )
 
     # write model to file
-    time = datetime.datetime.now().strftime("%Y_%m_%d")
-    sbml_file = f"lipidomics_{time}"
+    # time = datetime.datetime.now().strftime("%Y_%m_%d")
+    sbml_file = f"lipidomics_2023_08_30"
     if index is not None:
         dir = f"../Petab_models_230829/3_labels/{sbml_file}_{index}"
         sbml_file = f"{sbml_file}_{index}"
@@ -125,6 +167,32 @@ def create_petab_model(
     noise: bool = False,
     timepoints: list = [90],
 ):
+    """
+    Create a PEtab model from an SBML model.
+
+    This function creates a PEtab model by first creating an SBML model using
+    create_sbml_model, and then generating the necessary PEtab files (observable table,
+    condition table, measurement table, and parameter table). It also creates synthetic
+    data for the model if noise is True.
+
+    Parameters
+    ----------
+    index : int, optional
+        If provided, the model will be saved with this index in its filename and directory.
+        Default is None.
+    parameter_dict : dict, optional
+        A dictionary of parameter names and values to use in the model.
+        Default is the PARAMETERS constant from sbml_model.py.
+    noise : bool, optional
+        Whether to add noise to the synthetic data. Default is False.
+    timepoints : list, optional
+        The timepoints at which to simulate measurements. Default is [90].
+
+    Returns
+    -------
+    None
+        The function creates PEtab files but does not return any value.
+    """
     sbml_file = create_sbml_model(parameter_dict=parameter_dict, index=index)
 
     dir = f"../Petab_models_230829/3_labels/{sbml_file}"
@@ -225,7 +293,6 @@ def create_petab_model(
     )
     problem = importer.create_problem(
         n_threads=8,
-        guess_steadystate=True,
         force_compile=False,
     )
     create_synthetic_data(

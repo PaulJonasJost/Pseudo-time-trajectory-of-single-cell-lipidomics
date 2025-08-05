@@ -7,7 +7,7 @@ from typing import Iterable, List
 from collections import Counter
 from copy import deepcopy
 
-import combinations_with_replacement as combinations_with_replacement
+from itertools import combinations_with_replacement
 
 logger = logging.getLogger(__name__)
 
@@ -86,6 +86,27 @@ def create_initial_Assignment(
     model: simplesbml.SbmlModel,
     n_labels: int = 1,
 ):
+    """
+    Create an initial assignment for a species with unlabeled fatty acids.
+
+    This function creates an initial assignment for a species with unlabeled fatty acids.
+    It constructs the species name with the appropriate number of "ul" (unlabeled) labels
+    and assigns the initial value parameter to it.
+
+    Parameters
+    ----------
+    species_name : str
+        The base name of the species.
+    model : simplesbml.SbmlModel
+        The SBML model to add the initial assignment to.
+    n_labels : int, optional
+        The number of labels the species can have. Default is 1.
+
+    Returns
+    -------
+    None
+        The function modifies the model in-place but does not return any value.
+    """
     initial_par_name = f"{species_name}_ul_initial"
     species_name_ul = species_name
     for i in range(n_labels):
@@ -237,72 +258,6 @@ def reactions_rem_label(
             i_react += 1
 
 
-def cardiolipin_syn(
-    labels: Iterable[str],
-    model: simplesbml.SbmlModel,
-):
-    labels_react_1 = [
-        list(lab) for lab in combinations_with_replacement(labels, 2)
-    ]
-    labels_react_2 = [
-        list(lab) for lab in combinations_with_replacement(labels, 2)
-    ]
-    labels_prod = [
-        list(lab) for lab in combinations_with_replacement(labels, 4)
-    ]
-    i_react = 0
-    for label_curr in labels_react_1:
-        for label_add in labels_react_2:
-            label = deepcopy(label_curr)
-            label = label + label_add
-            # convert to label ordering as it is in the products
-            label = next(
-                (lab for lab in labels_prod if compare_lists(label, lab)), None
-            )
-            # combine labeled fatty acid with labeled species to reactants
-            reactants = [
-                combine_species_label("CDP_DAG", label_curr),
-                combine_species_label("PG", label_add),
-            ]
-            products = [combine_species_label("CL", label)]
-            expression = f'k_cl_syn * {" * ".join(reactants)}'
-            model.addReaction(
-                reactants=reactants,
-                products=products,
-                expression=expression,
-                rxn_id=f"cl_syn_{i_react}",
-            )
-            i_react += 1
-
-
-def cardiolipin_hydrolysis(labels: Iterable[str], model: simplesbml.SbmlModel):
-    labels_cl = [
-        list(lab) for lab in combinations_with_replacement(labels, 4)
-    ]
-    i_react = 0
-    for label_cl in labels_cl:
-        # split the labels of cl on to pa and pg
-        labels_pa = uniqueCombinations(label_cl, 2)
-        for label_pa in labels_pa:
-            label_pg_counter = Counter(label_cl)
-            label_pg_counter.subtract(Counter(label_pa))
-            label_pg = [x for x in label_pg_counter.elements()]
-            # combine labeled fatty acid with labeled species to reactants
-            reactants = [combine_species_label("CL", label_cl)]
-            products = [
-                combine_species_label("PA", label_pa),
-                combine_species_label("PG", label_pg),
-            ]
-            expression = f'k_cl_hydro * {" * ".join(reactants)}'
-            model.addReaction(
-                reactants=reactants,
-                products=products,
-                expression=expression,
-                rxn_id=f"cl_hydro_{i_react}",
-            )
-            i_react += 1
-
-
 def reactions_keep_label(
     react_w_label: str,
     prod_w_label: str,
@@ -404,6 +359,16 @@ def reactions_degradation(
     product: str = None,
     keep_fas: bool = False,
 ):
+    """Creates a degradation reaction for the different labeled species.
+
+    :param react_w_label: Base name of the reactant.
+    :param n_label_prod: Number of labels.
+    :param k_reaction: Reaction parameter.
+    :param labels: The possible labels.
+    :param model: The sbml model.
+    :param product: The prudoct from the reaction.
+    :param keep_fas: Whether to keep the FAs lost in the reaction in the system
+    """
     labels_react = [
         list(lab)
         for lab in combinations_with_replacement(labels, n_label_react)
