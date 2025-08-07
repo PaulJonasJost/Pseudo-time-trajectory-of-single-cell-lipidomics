@@ -3,7 +3,7 @@ message: "Code and Data to the Paper Pseudo-time trajectory of single-cell lipid
 authors:
 - family-names: Jost
   given-names: Paul Jonas
-orcid: https://orcid.org/0000-0001-7613-6244
+  orcid: https://orcid.org/0000-0001-7613-6244
 title: Pseudo-time trajectory of single-cell lipidomics
-version: v0.2.3
+version: v0.2.4
 date-released: 2025-08-07
