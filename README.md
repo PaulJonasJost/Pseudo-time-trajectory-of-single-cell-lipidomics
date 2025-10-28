@@ -28,6 +28,9 @@ The repository contains the following structure:
 * Results_h5: Results of the optimization, which can be used to create the figures 
   without running the optimization again. The structure of a single `.hdf5` File can 
   be found [here](https://pypesto.readthedocs.io/en/latest/storage_format.html).
+* Bulk_Data: Experimental data and Code of the anaylsis of the bulk data. Reproduces 
+  Supplementary Figure 4 and 5. Experimental data includes Raw data, processed data in 
+   the form of Excel files and a tsv file for the notebook.
 
 We also provide the base model (See **Figure 2A**) and an example model with 3 labels 
 as SBML files.
