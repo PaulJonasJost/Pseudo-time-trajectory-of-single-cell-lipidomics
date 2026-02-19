@@ -1,7 +1,7 @@
 # Readme for the repository
 
 This is a repository for the corresponding paper 
-"Pseudo-time trajectory of single cell lipidomics".
+"Experimental design and computational modeling to infer single-cell lipid dynamics from a single destructive measurement".
 
 To reproduce the workflows and figures of the paper, please follow the instructions below.
 
